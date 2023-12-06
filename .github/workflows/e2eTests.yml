@@ -63,4 +63,4 @@ jobs:
 
       - name: Run Tests
         continue-on-error: true
-        run: mvn test -DbrowserType="firefox" -DheadlessExecution="true"  -Dtest="${{ github.event.inputs.testsPath }}"
+        run: mvn test -DbrowserType="firefox" -DheadlessExecution="false"  -Dtest="${{ github.event.inputs.testsPath }}"
