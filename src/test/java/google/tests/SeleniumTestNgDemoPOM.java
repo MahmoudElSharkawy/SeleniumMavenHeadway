@@ -41,6 +41,17 @@ public class SeleniumTestNgDemoPOM {
                 .clickOnFirstSearchResult();
     }
 
+    @Test
+    public void testSearch3() {
+        new GoogleHomePage(driver)
+                .validateThatWeAreInTheHomePage()
+                .googleSearch(testData.getTestData("test3.searchData3"));
+        new GoogleSearchResultsPage(driver)
+                .assertOnFirstSearchResult(testData.getTestData("test3.expectedFirstResult3"))
+                .validateThatWeAreInTheSearchResultsPage(testData.getTestData("test3.searchData3"))
+                .clickOnFirstSearchResult();
+    }
+
     //////////////////////// Configurations \\\\\\\\\\\\\\\\\\\\\\\\\\\
 
     @BeforeClass
