@@ -1,5 +1,6 @@
 package framework.engine;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,6 +13,8 @@ import java.time.Duration;
 
 public class DriverFactory {
     static WebDriver driver;
+
+    @Step("Initializing new driver (Browser Type: {browserType} | Headless Execution: {headless})")
     public static WebDriver initDriver(String browserType, int implicitWait, Boolean maximize, Boolean headless) {
         if (browserType.equalsIgnoreCase("chrome")) {
             ChromeOptions chromeOptions = null;

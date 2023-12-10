@@ -1,5 +1,6 @@
 package google.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -19,17 +20,20 @@ public class GoogleHomePage {
 
 
     // Actions
+    @Step("Navigate to Google Search Home Page")
     public void navigateToGoogleSearchHomePage() {
         driver.navigate().to(googleHomePageUrl);
     }
 
 
+    @Step("Google search ${searchData}")
     public GoogleHomePage googleSearch(String searchData) {
         driver.findElement(googleSearchBar_textarea).sendKeys(searchData, Keys.ENTER);
         return this;
     }
 
     // Validations
+    @Step("Validate that we are in the Home Page")
     public GoogleHomePage validateThatWeAreInTheHomePage() {
         Assert.assertEquals(driver.getTitle(), "Google");
         return this;

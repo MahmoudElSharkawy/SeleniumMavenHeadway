@@ -5,6 +5,7 @@ import framework.engine.JsonFileManager;
 import framework.engine.PropertiesReader;
 import google.pages.GoogleHomePage;
 import google.pages.GoogleSearchResultsPage;
+import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
@@ -15,11 +16,18 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+@Epic("Google")
+@Feature("Search Engine")
+@Story("Search")
 public class SeleniumTestNgDemoPOM {
     WebDriver driver;
     JsonFileManager testData;
 
-    @Test
+    @Test(description = "Search Giza Systems")
+    @Description("Given I open the google home page to search engine, When I search on Giza Systems, Then I should be navigated to the search results page, And get the results related to the Giza Systems")
+    @Severity(SeverityLevel.CRITICAL)
+    @TmsLink("Test_case")
+    @Issue("Software_bug")
     public void testSearch1() {
         new GoogleHomePage(driver)
                 .validateThatWeAreInTheHomePage()
@@ -30,7 +38,7 @@ public class SeleniumTestNgDemoPOM {
                 .clickOnFirstSearchResult();
     }
 
-    @Test
+    @Test(description = "Search Selenium")
     public void testSearch2() {
         new GoogleHomePage(driver)
                 .validateThatWeAreInTheHomePage()
@@ -41,7 +49,7 @@ public class SeleniumTestNgDemoPOM {
                 .clickOnFirstSearchResult();
     }
 
-    @Test
+    @Test(description = "Search Headway")
     public void testSearch3() {
         new GoogleHomePage(driver)
                 .validateThatWeAreInTheHomePage()
@@ -66,7 +74,7 @@ public class SeleniumTestNgDemoPOM {
         new GoogleHomePage(driver).navigateToGoogleSearchHomePage();
     }
 
-    @AfterMethod
+    @AfterMethod(description = "Close driver")
     public void afterMethod() {
         driver.quit();
     }
