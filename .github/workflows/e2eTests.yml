@@ -35,6 +35,7 @@ jobs:
         continue-on-error: true
         run: |
           cd ./.allure/allure-2.25.0/bin/
+          ls
           allure generate --single-file --clean target/allure-results
           cd ../../../
           ls
