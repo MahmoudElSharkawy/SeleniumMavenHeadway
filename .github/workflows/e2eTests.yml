@@ -33,7 +33,11 @@ jobs:
 
       - name: Generate Allure Report Single File
         continue-on-error: true
-        run: sudo -E env "PATH=$PATH" ./.allure/allure-2.25.0/bin/allure generate --single-file --clean target/allure-results
+        run: |
+          cd ./.allure/allure-2.25.0/bin/
+          allure generate --single-file --clean target/allure-results
+          cd ../../../
+          ls
     
       - name: Upload Allure Report as Artifact
         uses: actions/upload-artifact@v3
