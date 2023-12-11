@@ -34,7 +34,7 @@ jobs:
       - name: Generate Allure Report Single File
         continue-on-error: true
         run: |
-          chmod -R 777 *
+          sudo chmod a+rwx .allure/allure-2.25.0/bin
           ./.allure/allure-2.25.0/bin/allure generate --single-file --clean target/allure-results
     
       - name: Upload Allure Report as Artifact
