@@ -26,7 +26,7 @@ public class GoogleHomePage {
     }
 
 
-    @Step("Google search ${searchData}")
+    @Step("Google search {searchData}")
     public GoogleHomePage googleSearch(String searchData) {
         driver.findElement(googleSearchBar_textarea).sendKeys(searchData, Keys.ENTER);
         return this;
