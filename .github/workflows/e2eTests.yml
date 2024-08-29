@@ -130,6 +130,6 @@ jobs:
         uses: dorny/test-reporter@v1
         if: success() || failure()
         with:
-          name: Tests Report Firefox_Windows
+          name: Tests Report Edge_Windows
           path: 'target/surefire-reports/TEST-*.xml'
           reporter: java-junit
