@@ -2,6 +2,7 @@ target/
 test-output/
 /allure-results/
 /allure-report/
+/.allure/
 
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

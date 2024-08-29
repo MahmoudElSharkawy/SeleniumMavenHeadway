@@ -12,7 +12,7 @@ public class GoogleHomePage {
     String googleHomePageUrl = "https://www.google.com/ncr";
 
     // Locators
-    private final By googleSearchBar_textarea = By.xpath("//textarea[@jsname='yZiJbe']");
+    private final By googleSearchBar_textarea = By.xpath("//textarea[@class='gLFyf']");
 
     public GoogleHomePage(WebDriver driver) {
         this.driver = driver;
