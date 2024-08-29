@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
@@ -17,8 +18,8 @@ public class DriverFactory {
     @Step("Initializing new driver (Browser Type: {browserType} | Headless Execution: {headless})")
     public static WebDriver initDriver(String browserType, int implicitWait, Boolean maximize, Boolean headless) {
         if (browserType.equalsIgnoreCase("chrome")) {
-            ChromeOptions chromeOptions = null;
-            if (headless) {
+            ChromeOptions chromeOptions;
+            if (Boolean.TRUE.equals(headless)) {
                 chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--headless=new");
                 driver = new ChromeDriver(chromeOptions);
@@ -26,16 +27,23 @@ public class DriverFactory {
                 driver = new ChromeDriver();
             }
         } else if (browserType.equalsIgnoreCase("firefox")) {
-            FirefoxOptions ffOptions = null;
-            if (headless){
+            FirefoxOptions ffOptions;
+            if (Boolean.TRUE.equals(headless)) {
                 ffOptions = new FirefoxOptions();
                 ffOptions.addArguments("--headless");
                 driver = new FirefoxDriver(ffOptions);
             } else {
                 driver = new FirefoxDriver();
             }
-        } else if (browserType == "edge") {
-            driver = new EdgeDriver();
+        } else if (browserType.equalsIgnoreCase("edge")) {
+            EdgeOptions edgeOptions;
+            if (Boolean.TRUE.equals(headless)) {
+                edgeOptions = new EdgeOptions();
+                edgeOptions.addArguments("--headless=new");
+                driver = new EdgeDriver(edgeOptions);
+            } else {
+                driver = new EdgeDriver();
+            }
         } else {
             driver = new SafariDriver();
         }
