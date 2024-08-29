@@ -29,17 +29,17 @@ jobs:
 
       - name: Run Tests
         continue-on-error: true
-        run: mvn test -DbrowserType="chrome" -DheadlessExecution="true"  -Dtest="${{ github.event.inputs.testsPath }}"
+        run: mvn test "-DbrowserType=chrome" "-Dallure.results.directory=target/allure-results" "-DheadlessExecution=true" "-Dtest=${{ github.event.inputs.testsPath }}"
 
       - name: Generate Allure Report Single File
         continue-on-error: true
-        run: ./.allure/allure-2.25.0/bin/allure generate --single-file --clean target/allure-results
+        run: mvn allure:report
     
       - name: Upload Allure Report as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: Chrome_Linux_Allure
-          path: allure-report/index.html
+          path: target/site/allure-maven-plugin/index.html
       
       - name: Publish Report
         continue-on-error: true
@@ -71,17 +71,17 @@ jobs:
 
       - name: Run Tests
         continue-on-error: true
-        run: mvn test -DbrowserType="firefox" -DheadlessExecution="false"  -Dtest="${{ github.event.inputs.testsPath }}"
+        run: mvn test "-DbrowserType=firefox" "-Dallure.results.directory=target/allure-results" "-DheadlessExecution=false" "-Dtest=${{ github.event.inputs.testsPath }}"
 
       - name: Generate Allure Report Single File
         continue-on-error: true
-        run: ./.allure/allure-2.25.0/bin/allure generate --single-file --clean target/allure-results
-    
+        run:  mvn allure:report
+
       - name: Upload Allure Report as Artifact
         uses: actions/upload-artifact@v3
         with:
           name: Firefox_Windows_Allure
-          path: allure-report/index.html
+          path: target/site/allure-maven-plugin/index.html
 
       - name: Publish Report 
         continue-on-error: true
